@@ -2,12 +2,14 @@ package cn.porkchop.socialbinary.base.controller;
 
 import cn.porkchop.socialbinary.base.pojo.Label;
 import cn.porkchop.socialbinary.base.service.LabelService;
+import cn.porkchop.socialbinary.common.utils.PageResult;
 import cn.porkchop.socialbinary.common.utils.Result;
 import cn.porkchop.socialbinary.common.utils.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * 标签控制层
@@ -75,4 +77,30 @@ public class LabelController {
         labelService.deleteById(id);
         return new Result(true, StatusCode.OK, "删除成功");
     }
+
+    /**
+     * 根据条件查询
+     *
+     * @param searchMap
+     * @return
+     */
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public Result findSearch(@RequestBody Map searchMap) {
+        return new Result(true, StatusCode.OK, "查询成功", labelService.findSearch(searchMap));
+    }
+
+    /**
+     * 条件+分页查询
+     *
+     * @param searchMap
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping(value = "/search/{page}/{size}", method = RequestMethod.POST)
+    public Result findSearch(@RequestBody Map searchMap, @PathVariable int page, @PathVariable int size) {
+        Page pageList = labelService.findSearch(searchMap, page, size);
+        return new Result(true, StatusCode.OK, "查询成功", new PageResult<>(pageList.getTotalElements(), pageList.getContent()));
+    }
+
 }

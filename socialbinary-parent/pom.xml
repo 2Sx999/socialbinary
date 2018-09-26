@@ -10,6 +10,10 @@
     <modules>
         <module>socialbinary-base</module>
         <module>socialbinary-common</module>
+        <module>socialbinary-recruit</module>
+        <module>socialbinary-qa</module>
+        <module>socialbinary-article</module>
+        <module>socialbinary-gathering</module>
     </modules>
 
     <packaging>pom</packaging>
