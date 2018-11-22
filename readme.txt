@@ -4,3 +4,5 @@ tomcat端口记录:
     qa:9003
     article:9004
     gathering:9005
+eureka端口:
+    eureka:9006

@@ -14,6 +14,7 @@
         <module>socialbinary-qa</module>
         <module>socialbinary-article</module>
         <module>socialbinary-gathering</module>
+        <module>socialbinary-eureka</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -39,4 +40,15 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

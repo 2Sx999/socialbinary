@@ -3,6 +3,7 @@ package cn.porkchop.socialbinary.qa.controller;
 import cn.porkchop.socialbinary.common.utils.PageResult;
 import cn.porkchop.socialbinary.common.utils.Result;
 import cn.porkchop.socialbinary.common.utils.StatusCode;
+import cn.porkchop.socialbinary.qa.client.LabelClient;
 import cn.porkchop.socialbinary.qa.pojo.Problem;
 import cn.porkchop.socialbinary.qa.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,7 @@ public class ProblemController {
     /**
      * 根据ID查询
      *
-     * @param id
-     *         ID
+     * @param id ID
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -51,12 +51,9 @@ public class ProblemController {
     /**
      * 分页+多条件查询
      *
-     * @param searchMap
-     *         查询条件封装
-     * @param page
-     *         页码
-     * @param size
-     *         页大小
+     * @param searchMap 查询条件封装
+     * @param page      页码
+     * @param size      页大小
      * @return 分页结果
      */
     @RequestMapping(value = "/search/{page}/{size}", method = RequestMethod.POST)
@@ -148,5 +145,15 @@ public class ProblemController {
         PageResult<Problem> pageResult = new PageResult<>(pageList.getTotalElements(), pageList.getContent());
         return new Result(true, StatusCode.OK, "查询成功", pageResult);
     }
+
+    @Autowired
+    private LabelClient labelClient;
+
+    @RequestMapping(value = "/label/{labelid}")
+    public Result findLabelById(@PathVariable String labelid) {
+        Result result = labelClient.findById(labelid);
+        return result;
+    }
+
 
 }

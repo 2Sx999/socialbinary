@@ -14,3 +14,9 @@ spring:
   redis:
     host: kod.porkchop.cn
     port: 16379
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9006/eureka
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
