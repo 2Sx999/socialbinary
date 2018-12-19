@@ -1,14 +1,14 @@
-server: 
+server:
   port: 9003
-spring: 
-  application:  
+spring:
+  application:
     name: socialbinary-qa #指定服务名
-  datasource:  
+  datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/tensquare_qa?useUnicode=true&amp;characterEncoding=UTF8
     username: root
     password: root
-  jpa: 
+  jpa:
     database: MySQL
     show-sql: true
 eureka:
@@ -17,3 +17,6 @@ eureka:
       defaultZone: http://localhost:9006/eureka
   instance:
     prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+feign:
+  hystrix:
+    enabled: true

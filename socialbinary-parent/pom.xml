@@ -15,6 +15,8 @@
         <module>socialbinary-article</module>
         <module>socialbinary-gathering</module>
         <module>socialbinary-eureka</module>
+        <module>socialbinary-manager</module>
+        <module>socialbinary-web</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -6,3 +6,6 @@ tomcat端口记录:
     gathering:9005
 eureka端口:
     eureka:9006
+zuul端口:
+    manager:9007
+    web:9008
